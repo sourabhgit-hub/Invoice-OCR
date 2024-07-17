@@ -55,10 +55,15 @@ def principle6():
         # Process each text value as needed
         # for text in text_values:
         #     print(f"Received text: {text}")
+        # json_responses = [
+        #     {"type": "electricity", "Units": 123, "Name": "ABC", "date": "1/1/2024"}
+        # ]
 
             # Example processing: Save to a file or database (not shown here)
             # with open('output.txt', 'a') as f:
             #     f.write(f"{text}\n")
+
+        # create_json_files(json_responses)
 
         # Return a success response
         return jsonify({'message': 'Texts received successfully', 'texts': text_values}), 200
@@ -70,6 +75,24 @@ def principle6():
         print(f"Error: {e}")
         return jsonify({'message': 'An error occurred', 'error': str(e)}), 500
     
+# def create_json_files(response):
+#     file_name = f"{response['type']}.json"
+#     # Check if file already exists
+#     if os.path.exists(file_name):
+#         # Update existing JSON file
+#         with open(file_name, 'r') as json_file:
+#             data = json.load(json_file)
+#             data.update(response)
+
+#         with open(file_name, 'w') as json_file:
+#             json.dump(data, json_file, indent=4)
+#             print(f"Updated {file_name}")
+#     else:
+#         # Create new JSON file
+#         with open(file_name, 'w') as json_file:
+#             json.dump(response, json_file, indent=4)
+#             print(f"Created {file_name}")
+
 def main(img_path):
     image = ImageProcessor(img_path)
     image.preprocess_image()
