@@ -7,24 +7,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div>
-        <div class="image-container" id="image-container">
-            <img id="image" src="{{ url_for('static', filename='uploaded_image.jpg') }}" alt="Fixed Size Image">
-            <canvas id="canvas"></canvas>
-        </div>
-        <form id="textForm">
-            <div id="textFieldsContainer">
-                <div class="input-group">
-                    <!-- <label for="inputField1">Label</label>
-                    <input type="text" class="inputField" id="inputField1" placeholder="Click a rectangle to copy text here"> -->
-                </div>
+    <div class="container">
+        <div class="image-column">
+            <div class="image-container" id="image-container">
+                <img id="image" src="{{ url_for('static', filename='uploaded_image.jpg') }}" alt="Fixed Size Image">
+                <canvas id="canvas"></canvas>
             </div>
-            <input type="text" id="newLabelText" placeholder="Enter label for new text box">
-            <button type="button" id="addTextField">Add Text Box</button>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-        <a href="/">Upload Another Image</a>
+        </div>
+        <div class="form-column">
+            <form id="textForm">
+                <div id="textFieldsContainer">
+                    <!-- Default input fields will be added here dynamically -->
+                </div>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+            <a href="/">Upload Another Image</a>
+        </div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

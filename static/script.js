@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const context = canvas.getContext('2d');
     const textForm = document.getElementById('textForm');
     const textFieldsContainer = document.getElementById('textFieldsContainer');
-    const addTextFieldButton = document.getElementById('addTextField');
     const newLabelText = document.getElementById('newLabelText');
     let rectangles = [];
     let selectedTextField = null;
     let fieldCount = 1;
+    let selectedBill='fuel'
 
     if (!imageContainer || !image || !canvas) {
         console.error('Element not found');
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleFormSubmit(event) {
         event.preventDefault();
         const textValues = Array.from(document.querySelectorAll('.inputField')).map(input => input.value);
-
+        console.log(textValues);
         fetch('/submit', {
             method: 'POST',
             headers: {
@@ -118,14 +118,18 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error submitting form:', error));
     }
 
-    function addTextField() {
-        const labelText = newLabelText.value.trim();
-        if (labelText === '') {
-            alert('Please enter a label for the new text box.');
-            return;
+    function addDefaultTextFields() {
+        let labels=[]
+        if (selectedBill=='fuel'){
+            labels=["Subtype","Units","Amount","Date"];
         }
+        for (let i = 0; i < labels.length; i++) {
+            addTextField(labels,i);
+        }
+    }
 
-        fieldCount++;
+    function addTextField(labels, i) {
+        const labelText = `${labels[i]}`; // Default label text
         const inputGroup = document.createElement('div');
         inputGroup.className = 'input-group';
 
@@ -146,8 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         inputGroup.appendChild(newTextField);
         textFieldsContainer.appendChild(inputGroup);
 
-        // Clear the label input field after adding the new text box
-        newLabelText.value = '';
+        fieldCount++;
     }
 
     image.onload = () => {
@@ -162,12 +165,14 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas.addEventListener('click', handleMouseClick);
     canvas.addEventListener('mousemove', handleMouseMove);
     textForm.addEventListener('submit', handleFormSubmit);
-    addTextFieldButton.addEventListener('click', addTextField);
 
     console.log('Script loaded, waiting for image to load');
 
     // Resize the canvas whenever the window is resized
     window.addEventListener('resize', resizeCanvas);
+
+    // Add default input fields when the DOM content is loaded
+    addDefaultTextFields();
 
     // Initialize the first text field as selected
     document.querySelector('.inputField').addEventListener('focus', function() {

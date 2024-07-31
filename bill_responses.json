@@ -1,0 +1,56 @@
+[
+    {
+        "type": "electricity",
+        "Units": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    },
+    {
+        "type": "electricity",
+        "Amount": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    },
+    {
+        "type": "electricity",
+        "Amount": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    },
+    {
+        "type": "electricity",
+        "Amount": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    },
+    {
+        "type": "fuel",
+        "Amount": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    },
+    {
+        "type": "fuel",
+        "Amount": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    },
+    {
+        "type": "fuel",
+        "Amount": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    },
+    {
+        "type": "fuel",
+        "Amount": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    },
+    {
+        "type": "fuel",
+        "Amount": 123,
+        "Name": "ABC",
+        "date": "1/1/2024"
+    }
+]
